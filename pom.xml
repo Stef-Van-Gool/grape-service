@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>druiven-service</artifactId>
+    <artifactId>grapes-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>druiven-service</name>
-    <description>druiven-service</description>
+    <name>grapes-service</name>
+    <description>grapes-service</description>
     <properties>
         <java.version>11</java.version>
         <sonar.organization>wouter127</sonar.organization>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
+            <version>42.2.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

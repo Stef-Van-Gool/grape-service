@@ -1,15 +1,13 @@
 package com.example.grapesservice.controller;
 
-import com.example.grapesservice.Repository.GrapeRepository;
+import com.example.grapesservice.repository.GrapeRepository;
 import com.example.grapesservice.model.Grape;
-import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
-
 
 
 @RestController
@@ -27,22 +25,23 @@ public class GrapeController {
             grapeRepository.save(new Grape("Sangiovese", "frankrijk", "sangio"));
         }
 
-        //System.out.println(grapeRepository.finGrapeByGrapeNameContaining("2"));
+        System.out.println(grapeRepository.findGrapeByGrapeName("Fernao Pires").getGrapeName());
+        System.out.println(grapeRepository.count());
     }
 
     @GetMapping("/grapes/grapename/{grapeName}")
     public List<Grape> getGrapesByGrapeName(@PathVariable String grapeName){
-        return grapeRepository.finGrapeByGrapeNameContaining(grapeName);
+        return grapeRepository.findGrapeByGrapeNameContaining(grapeName);
     }
 
     @GetMapping("/grapes/region/{region}")
     public List<Grape> getGrapesByRegion(@PathVariable String region){
-        return grapeRepository.finGrapeByRegionContaining(region);
+        return grapeRepository.findGrapeByRegionContaining(region);
     }
 
     @GetMapping("/grapes/country/{country}")
     public List<Grape> getGrapesByCountry(@PathVariable String country){
-        return grapeRepository.finGrapeByCountryContaining(country);
+        return grapeRepository.findGrapeByCountryContaining(country);
     }
 
     @PostMapping("/grapes")
