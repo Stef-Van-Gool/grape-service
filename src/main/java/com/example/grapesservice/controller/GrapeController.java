@@ -25,8 +25,8 @@ public class GrapeController {
             grapeRepository.save(new Grape("Sangiovese", "frankrijk", "sangio"));
         }
 
-        System.out.println(grapeRepository.findGrapeByGrapeName("Fernao Pires").getGrapeName());
-        System.out.println(grapeRepository.count());
+        //System.out.println(grapeRepository.findGrapeByGrapeName("Fernao Pires").getGrapeName());
+        //System.out.println(grapeRepository.count());
     }
 
     @GetMapping("/grapes/grapename/{grapeName}")
