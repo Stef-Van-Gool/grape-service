@@ -51,16 +51,13 @@ public class grapeControllerIntegrationTests {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void givenGrapeName_whenGetGrapeList_thenReturnJsonGrapeList() throws Exception {
-        mockMvc.perform(get("/grapes/grapename/{grapeName}", "se"))
+    public void givenGrapeName_whenGetGrape_thenReturnJsonGrape() throws Exception {
+        mockMvc.perform(get("/grapes/grapename/{grapeName}", "semillon"))
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$[0].grapeName", is("semillon")))
-            .andExpect(jsonPath("$[0].region", is("italie")))
-            .andExpect(jsonPath("$[0].country", is("sangio")))
-            .andExpect(jsonPath("$[1].grapeName", is("Sangiovese")))
-            .andExpect(jsonPath("$[1].region", is("frankrijk")))
-            .andExpect(jsonPath("$[1].country", is("sangio")));
+            .andExpect(jsonPath("$.grapeName", is("semillon")))
+            .andExpect(jsonPath("$.region", is("italie")))
+            .andExpect(jsonPath("$.country", is("sangio")));
     }
 
     @Test

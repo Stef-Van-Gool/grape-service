@@ -34,26 +34,17 @@ public class GrapeControllerUnitTests {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void givenGrapeName_whenGetGrapesByGrapeName_thenReturnGrapes() throws Exception {
+    public void givenGrapeName_whenGetGrapeByGrapeName_thenReturnGrape() throws Exception {
         Grape grape1 = new Grape("semillon", "italie", "sangio");
-        Grape grape2 = new Grape("Sangiovese", "frankrijk", "sangio");
 
-        List<Grape> grapeList = new ArrayList<>();
-        grapeList.add(grape1);
-        grapeList.add(grape2);
+        given(grapeRepository.findGrapeByGrapeName("semillon")).willReturn(grape1);
 
-        given(grapeRepository.findGrapeByGrapeNameContaining("se")).willReturn(grapeList);
-
-        mockMvc.perform(get("/grapes/grapename/{grapeName}", "se"))
+        mockMvc.perform(get("/grapes/grapename/{grapeName}", "semillon"))
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$[0].grapeName", is("semillon")))
-            .andExpect(jsonPath("$[0].region", is("italie")))
-            .andExpect(jsonPath("$[0].country", is("sangio")))
-
-            .andExpect(jsonPath("$[1].grapeName", is("Sangiovese")))
-            .andExpect(jsonPath("$[1].region", is("frankrijk")))
-            .andExpect(jsonPath("$[1].country", is("sangio")));
+            .andExpect(jsonPath("$.grapeName", is("semillon")))
+            .andExpect(jsonPath("$.region", is("italie")))
+            .andExpect(jsonPath("$.country", is("sangio")));
     }
 
     @Test
