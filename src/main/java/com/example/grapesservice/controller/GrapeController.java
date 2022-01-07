@@ -20,9 +20,9 @@ public class GrapeController {
     public void fillDB() {
         if(grapeRepository.count()==0){
             grapeRepository.save(new Grape("Fernao Pires", "spanje", "catalonië"));
-            grapeRepository.save(new Grape("semillon", "italië", "rome"));
+            grapeRepository.save(new Grape("Semillon", "italië", "rome"));
             grapeRepository.save(new Grape("Merlot", "frankrijk", "champagne"));
-            grapeRepository.save(new Grape("Sangiovese", "frankrijk", "sangio"));
+            grapeRepository.save(new Grape("Sangiovese", "Toscane", "Italië"));
         }
 
         //System.out.println(grapeRepository.findGrapeByGrapeName("Fernao Pires").getGrapeName());
@@ -30,8 +30,8 @@ public class GrapeController {
     }
 
     @GetMapping("/grapes/grapename/{grapeName}")
-    public List<Grape> getGrapesByGrapeName(@PathVariable String grapeName){
-        return grapeRepository.findGrapeByGrapeNameContaining(grapeName);
+    public Grape getGrapeByGrapeName(@PathVariable String grapeName){
+        return grapeRepository.findGrapeByGrapeName(grapeName);
     }
 
     @GetMapping("/grapes/region/{region}")
