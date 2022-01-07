@@ -15,8 +15,8 @@
     <description>grapes-service</description>
     <properties>
         <java.version>11</java.version>
-            <sonar.organization>wouter</sonar.organization>
-            <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+            <sonar.organization>stef-van-gool</sonar.organization>
+            <sonar.host.url>https://sonarcloud.io/</sonar.host.url>
     </properties>
     <dependencies>
         <dependency>
